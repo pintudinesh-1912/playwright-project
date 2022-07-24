@@ -12,6 +12,8 @@ const config = {
     trace: 'on-first-retry',
     screenshot:'only-on-failure',
     trace:'retain-on-failure',
+    video:"retain-on-failure",
+    trace:'on'
   },
 
   /* Configure projects for major browsers */
