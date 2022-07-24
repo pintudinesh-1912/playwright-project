@@ -49,7 +49,18 @@ test.describe('Automation for To Do MVC', () => {
       await todosPage.enterTodoItems(toDoItem);
     }
     await todosPage.markLastItemAsCompleted();
-    await expect(todosPage.checkCompletionButton).toHaveClass("completed");  
+    expect(await todosPage.checkCompletionButton.count()).toBe(1);
+  });
+
+  test('Verify that multiple to-do items can be marked completed', async ({page}) => {
+    const pageRepository = new PageRepository(page); 
+    const todosPage = pageRepository.getToDoPage();
+    for (var i=0;i<5;i++) {
+      toDoItem = faker.random.alphaNumeric(10);
+      await todosPage.enterTodoItems(toDoItem);
+      await todosPage.completedButton.nth(i).click();
+    }
+    expect(await todosPage.checkCompletionButton.count()).toBe(5);
   });
 })
 
