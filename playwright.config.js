@@ -9,7 +9,6 @@ const config = {
   reporter: 'html',
   use: {
     actionTimeout: 0,
-    trace: 'on-first-retry',
     screenshot:'only-on-failure',
     trace:'retain-on-failure',
     video:"retain-on-failure",
